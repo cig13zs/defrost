@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Defrost — unbreak hostile websites",
+  "name": "Defrost: restore browser controls",
   "version": "1.0.0",
   "description": "Restore text selection, copying, right-click, and unfrozen scroll in one click. Runs offline, zero tracking.",
   "icons": {
@@ -10,12 +10,8 @@
   },
   "permissions": [
     "activeTab",
-    "scripting",
-    "sidePanel"
+    "scripting"
   ],
-  "side_panel": {
-    "default_path": "popup.html"
-  },
   "action": {
     "default_popup": "popup.html",
     "default_title": "Defrost this page",

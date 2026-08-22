@@ -1,16 +1,14 @@
-﻿# Defrost
+# Defrost
 
-Unbreak hostile websites. Restore text selection, copying, right-click, and
-unfrozen scroll in one click.
+Restore text selection, copying, right-click, and scrolling when a page disables
+native browser controls. Defrost runs only when you click it.
 
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-buy_me_a_coffee-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/jju1s)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 
-Web app / Test page: **[cig13zs.github.io/defrost](https://cig13zs.github.io/defrost/)**
-
 Many websites break native browser features to force newsletter signups or stop
-you copying a recipe or code snippet. They disable right-click, block Ctrl+C,
-freeze the scrollbar with overflow: hidden, and blur text under modal backdrops.
+you copying a recipe or code snippet. They disable right-click, block Ctrl+C, or
+freeze the scrollbar with `overflow: hidden`.
 
 Defrost undoes those traps on demand. It runs only when you click it.
 
@@ -21,9 +19,7 @@ Defrost undoes those traps on demand. It runs only when you click it.
 | Disabled Text Selection | user-select: none !important | Injects universal user-select: auto !important |
 | Blocked Right-Click | oncontextmenu = () => false | Nullifies inline handlers and halts hostile capture |
 | Blocked Copy / Cut | oncopy = () => false / preventDefault() | Removes copy traps so native clipboard copy works |
-| Frozen Scrollbar | ody { overflow: hidden !important } | Forces overflow: auto !important on html & body |
-| Blurry Text Filters | ilter: blur(5px) | Strips blur and backdrop filters across content nodes |
-| Giant Modal Backdrops | ixed div with z-index: 9999 | Hides modal overlays covering >70% of viewport |
+| Frozen Scrollbar | body { overflow: hidden !important } | Forces overflow: auto !important on html & body |
 
 ## Install
 
@@ -36,26 +32,25 @@ Load unpacked in Chrome, Edge, Brave, or Opera:
 
 ## How it works
 
-Defrost uses ctiveTab and scripting. It declares **zero host permissions**
+Defrost uses activeTab and scripting. It declares **zero host permissions**
 and has no background network access. It never runs automatically in the
 background; it executes once when you press the button.
 
-`ash
+```bash
 # Run test suite
 node engine.test.js
 node boot.test.js
-`
+```
 
 ## Limits
 
-Defrost removes DOM, CSS, and event listener restrictions. It cannot bypass
-server-side paywalls where the server never delivered the article text in the
-HTML payload.
+Defrost restores native input and scroll behavior. It does not hide overlays,
+reveal blurred content, bypass logins or paid access, or change consent choices.
 
 ## Privacy
 
 Runs entirely on your machine. Zero accounts, zero servers, zero analytics.
-See [docs/privacy.md](docs/privacy.md).
+See the [privacy policy](docs/privacy.html).
 
 ## License
 

@@ -53,6 +53,7 @@ var styleRes = Defrost.injectStyles(mockDoc);
 assert.strictEqual(styleRes, true, 'injects unbreak styles into document head');
 assert.strictEqual(mockDoc.head.children.length, 1, 'head contains unbreak stylesheet');
 assert.ok(mockDoc.head.children[0].textContent.indexOf('user-select: auto !important') >= 0, 'forces user-select');
+assert.strictEqual(mockDoc.head.children[0].textContent.indexOf('filter: none'), -1, 'does not reveal blurred or filtered content');
 
 // 2. Test inline handler clearing
 var cleared = Defrost.clearInlineHandlers(mockDoc, mockWin);
@@ -69,5 +70,7 @@ assert.ok(mockWin.listeners.length >= 4, 'listeners attached for contextmenu, co
 var res = Defrost.unbreak(mockDoc, mockWin);
 assert.strictEqual(res.success, true, 'unbreak executes cleanly');
 assert.strictEqual(typeof res.timestamp, 'number');
+assert.strictEqual(Object.prototype.hasOwnProperty.call(res, 'modalsDismissed'), false, 'does not hide overlays');
+assert.strictEqual(typeof Defrost.dismissOverlays, 'undefined', 'overlay removal is not exposed');
 
 console.log('ok, engine.test.js passed all assertions');
